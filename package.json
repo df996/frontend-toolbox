@@ -1,0 +1,92 @@
+{
+  "name": "toolbox",
+  "displayName": "toolbox",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "df996",
+  "repository": {
+    "url": "git@github.com:df996/frontend-toolbox.git"
+  },
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration":[
+      {
+        "title": "大风的工具箱",
+        "properties": {
+          "onlineDocumentToElTableApiResultDataPath": {
+            "type": "string",
+            "default": "data.list",
+            "description": "在线文档转ElTable接口数据路径"
+          }
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "online.document.to.el.table",
+        "title": "在线文档转ElTable"
+      },
+      {
+        "command": "online.document.to.el.form",
+        "title": "在线文档转ElForm"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "tools.editor.context",
+          "group": "0.tools.editor.context"
+        }
+      ],
+      "tools.editor.context": [
+        {
+          "command": "online.document.to.el.table",
+          "group": "0.tools.editor.context"
+        },
+        {
+          "command": "online.document.to.el.form",
+          "group": "0.tools.editor.context"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "tools.editor.context",
+        "label": "大风的工具箱"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@types/qs": "^6.9.15",
+    "@types/vscode": "^1.54.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "@vscode/test-electron": "^2.3.2",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.3",
+    "qs": "^6.13.0"
+  }
+}
